@@ -17,6 +17,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('test', function () {
-    return view('layouts.admin');
+Route::get('login', function () {
+    return 'login web';
 });
