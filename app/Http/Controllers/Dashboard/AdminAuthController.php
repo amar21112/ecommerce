@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminLoginRequest;
 use Illuminate\Http\Request;
 
-class LoginController extends Controller
+class AdminAuthController extends Controller
 {
     //
     public function login(){
@@ -20,5 +20,11 @@ class LoginController extends Controller
             return redirect()->route('admin.dashboard');
         }
         return redirect()->back()->with(['error'=>'something went wrong']);
+    }
+
+    public function logout(){
+        $guard = auth('admin');
+        $guard->logout();
+        return redirect()->route('admin.login');
     }
 }
