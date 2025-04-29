@@ -20,3 +20,8 @@ Route::get('/', function () {
 Route::get('/login', function () {
     return 'login web';
 })->name('login');
+
+
+Route::get('test', function () {
+  return \App\Models\Setting::find(13);
+});
