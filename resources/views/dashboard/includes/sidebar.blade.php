@@ -107,7 +107,7 @@
                             <li><a class="menu-item" href="{{route('edit.shipping.methods' , 'free')}}"
                                    data-i18n="nav.templates.vert.classic_menu">{{__('sidebar.free_delivery')}}</a>
                             </li>
-                            <li><a class="menu-item" href="{{route('edit.shipping.methods' , 'local')}}">{{__('sidebar.internal_delivery')}}</a>
+                            <li><a class="menu-item" href="{{route('edit.shipping.methods' , 'locale')}}">{{__('sidebar.internal_delivery')}}</a>
                             </li>
                             <li><a class="menu-item" href="{{route('edit.shipping.methods' , 'outer')}}"
                                    data-i18n="nav.templates.vert.compact_menu">{{__('sidebar.external_delivery')}}</a>
