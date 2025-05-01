@@ -30,6 +30,17 @@ Route::group(['prefix'=>LaravelLocalization::setLocale(),
             Route::put('update', 'ProfileController@updateProfile')->name('update.profile');
 //            Route::put('update/password', 'ProfileController@updateProfilePassword')->name('update.profile.password');
         });
+
+        ############categories routes################
+         Route::group(['prefix' => 'main-categories'], function () {
+             Route::get('/', 'MainCategoriesController@index')->name('admin.mainCategories');
+             Route::get('create', 'MainCategoriesController@create')->name('admin.mainCategories.create');
+             Route::post('store', 'MainCategoriesController@store')->name('admin.mainCategories.store');
+             Route::get('edit/{id}', 'MainCategoriesController@edit')->name('admin.mainCategories.edit');
+             Route::post('update/{id}', 'MainCategoriesController@update')->name('admin.mainCategories.update');
+             Route::get('delete/{id}', 'MainCategoriesController@destroy')->name('admin.mainCategories.delete');
+         });
+        ############end categories routes############
     });
 
     Route::group(['namespace' => 'Dashboard', 'middleware' => 'guest:admin','prefix'=>'admin'], function () {
