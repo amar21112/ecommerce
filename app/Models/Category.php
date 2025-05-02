@@ -19,7 +19,12 @@ class Category extends Model
     public $timestamps = true;
 
     public function scopeParent($query){
-        return $query->where('parent_id', null);
+        return $query->whereNull('parent_id');
+    }
+
+    public function scopeChild($query)
+    {
+        return $query->whereNotNull('parent_id');
     }
 
     public function getActive()
