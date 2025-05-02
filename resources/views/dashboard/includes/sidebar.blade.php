@@ -32,7 +32,7 @@
                     <li class="active"><a class="menu-item" href="{{route('admin.mainCategories')}}"
                                           data-i18n="nav.dash.ecommerce"> عرض الكل </a>
                     </li>
-                    <li><a class="menu-item" href="" data-i18n="nav.dash.crypto">أضافة
+                    <li><a class="menu-item" href="{{route('admin.mainCategories.create')}}" data-i18n="nav.dash.crypto">أضافة
                              قسم جديد </a>
                     </li>
                 </ul>
