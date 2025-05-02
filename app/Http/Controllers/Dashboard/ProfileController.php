@@ -31,6 +31,4 @@ class ProfileController extends Controller
             return redirect()->route('edit.profile')->with('error', 'Edit Failed');
         }
     }
-
-
 }

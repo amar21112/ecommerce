@@ -13,7 +13,7 @@ class CreateSettingsTable extends Migration
      */
     public function up()
     {
-
+        if (!Schema::hasTable('settings')) {
             Schema::create('settings', function (Blueprint $table) {
                 $table->increments('id');
                 $table->string('key')->unique();
@@ -21,7 +21,7 @@ class CreateSettingsTable extends Migration
                 $table->text('plain_value')->nullable();
                 $table->timestamps();
             });
-
+        }
     }
 
     /**
