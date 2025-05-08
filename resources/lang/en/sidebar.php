@@ -5,4 +5,7 @@ return [
     'free_delivery'=>'Free Delivery',
     'internal_delivery'=>'Local Delivery',
     'external_delivery'=>'Outer Delivery',
+    'brands'=>'Brands',
+    'show_brands'=>'Show Brands',
+    'add_brand'=>'Add Brand',
 ];

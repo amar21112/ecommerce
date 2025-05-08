@@ -8,6 +8,7 @@ return [
     'home'=>'Home',
 
     'category_name'=>'Category Name',
+    'parent_category'=>'Main Category',
     'category_slug'=>'Category Slug',
     'status'=>'Status',
     'control'=>'Control',
