@@ -75,6 +75,7 @@ class SubCategoriesController extends Controller
             if(!$category){
                 return redirect()->route('admin.subCategories')->with(['error'=>__('settings/categories.not_found')]);
             }
+            $category->translations()->delete();
             $category->delete();
              return redirect()->route('admin.subCategories')->with(['success'=>__('settings/categories.deleted')]);
         }catch (\Exception $exception){

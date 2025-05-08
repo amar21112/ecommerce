@@ -26,6 +26,7 @@ class MainCategoriesController extends Controller
                 $request->request->add(['is_active'=>0]);
             }
             $category = Category::create($request->except('_token'));
+            $category->name = $request->name;
             $category->save();
 
             DB::commit();
@@ -60,6 +61,7 @@ class MainCategoriesController extends Controller
                 return redirect()->route('admin.mainCategories')->with(['error'=>__('settings/categories.not_found')]);
             }
             $category->update($request->except('_token'));
+            $category->name = $request->name;
             $category->save();
             return redirect()->route('admin.mainCategories')->with(['success'=>__('settings/categories.updated')]);
         }catch (\Exception $exception){
@@ -74,7 +76,7 @@ class MainCategoriesController extends Controller
                 return redirect()->route('admin.mainCategories')->with(['error'=>__('settings/categories.not_found')]);
             }
 
-
+            $category->translations()->delete();
             $category->delete();
             return redirect()->route('admin.mainCategories')->with(['success'=>__('settings/categories.deleted')]);
         }catch (\Exception $exception){

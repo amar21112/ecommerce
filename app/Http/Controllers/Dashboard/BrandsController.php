@@ -100,12 +100,12 @@ class BrandsController extends Controller
             $photo = $brand->photo;
 
             deleteImage($photo);
-
+            $brand->translations()->delete();
             $brand->delete();
             return redirect()->route('admin.brands')->with(['success'=>'deleted successfully']);
         }catch (\Exception $exception){
             return redirect()->route('admin.brands')->with(['error'=>'failed delete brand']);
         }
     }
-    
+
 }
