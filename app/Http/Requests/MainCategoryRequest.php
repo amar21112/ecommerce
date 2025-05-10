@@ -27,6 +27,7 @@ class MainCategoryRequest extends FormRequest
            'name'=>'required',
             'slug'=>'required|unique:categories,slug,'.$this->id,
            'is_active'=>'boolean',
+            'type'=>'required|in:1,2',
         ];
     }
 

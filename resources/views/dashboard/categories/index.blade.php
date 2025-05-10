@@ -49,6 +49,7 @@
                                             <tr>
                                                 <th>{{__('settings/categories.category_name')}}</th>
                                                 <th>{{__('settings/categories.category_slug')}}</th>
+                                                <th>{{__('settings/categories.main_category')}}</th>
                                                 <th>{{__('settings/categories.status')}}</th>
                                                 <th>{{__('settings/categories.image')}}</th>
                                                 <th>{{__('settings/categories.control')}}</th>
@@ -61,6 +62,7 @@
                                                     <tr>
                                                         <td>{{$category -> name}}</td>
                                                         <td>{{$category->slug}}</td>
+                                                        <td>{{$category -> parentCategory -> name ?? '-'}}</td>
                                                         <td>{{$category ->getActive()}}</td>
                                                         <td> <img style="width: 150px; height: 100px;" src=""></td>
                                                         <td>

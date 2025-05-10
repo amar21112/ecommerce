@@ -85,21 +85,70 @@
                                                     </div>
 
                                                 </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group mt-1">
-                                                        <label for="switcheryColor4"
-                                                               class="card-title ml-1">{{__('settings/categories.status')}} </label>
 
-                                                        <input type="checkbox" value="1"
-                                                               name="is_active"
-                                                               id="switcheryColor4"
-                                                               class="switchery" data-color="success"
-                                                               checked />
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group mt-1">
+                                                            <label for="switcheryColor4"
+                                                                   class="card-title ml-1">{{__('settings/categories.status')}} </label>
+
+                                                            <input type="checkbox" value="1"
+                                                                   name="is_active"
+                                                                   id="switcheryColor4"
+                                                                   class="switchery" data-color="success"
+                                                                   checked />
 
 
-                                                        @error("is_active")
-                                                        <span class="text-danger"> {{__($message)}}</span>
-                                                        @enderror
+                                                            @error("is_active")
+                                                            <span class="text-danger"> {{__($message)}}</span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-3">
+                                                        <div class="form-group mt-1">
+                                                            <input type="radio"
+                                                                   name="type"
+                                                                   value="1"
+                                                                   class="switchery"
+                                                                   data-color="success"
+                                                                   checked
+                                                            />
+                                                            <label class="card-title ml-1">Main Category</label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-3">
+                                                        <div class="form-group mt-1">
+                                                            <input type="radio"
+                                                                   name="type"
+                                                                   value="2"
+                                                                   class="switchery"
+                                                                   data-color="success"
+                                                            />
+                                                            <label class="card-title ml-1">Sub Category</label>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="row hidden" id="cats-list">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label for="select_cats">select main category</label>
+                                                            <select name="parent_id" class="select2 form-control">
+                                                                <optgroup label="select category">
+                                                                    @if($categories && $categories->count() > 0)
+                                                                        @foreach($categories as $category)
+                                                                            <option value="{{$category->id}}">{{$category->name}}</option>
+                                                                        @endforeach
+                                                                    @endif
+                                                                </optgroup>
+                                                            </select>
+                                                            @error('parent_id')
+                                                                <span class="text-danger">{{$message}}</span>
+                                                            @enderror
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -126,4 +175,19 @@
         </div>
     </div>
 
+@endsection
+
+@section('script')
+    <script>
+        $('input:radio[name="type"]').change(
+            function (){
+                if(this.checked && this.value == '2'){
+                    $('#cats-list').removeClass('hidden');
+                }
+                else {
+                    $('#cats-list').addClass('hidden');
+                }
+            }
+        );
+    </script>
 @endsection

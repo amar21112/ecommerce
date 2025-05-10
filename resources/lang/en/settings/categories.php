@@ -2,6 +2,7 @@
 
 return [
     'main_categories' => 'Main Categories',
+    'main_category' => 'Main Category',
     'edit_main_category' => 'Edit Main Category',
     'create_main_category' => 'Create Main Category',
     'all_main_categories' => 'All Main Categories',

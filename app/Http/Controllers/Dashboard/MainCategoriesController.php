@@ -12,12 +12,13 @@ use Illuminate\Support\Facades\DB;
 class MainCategoriesController extends Controller
 {
     public function index(){
-        $categories = Category::parent()->orderBy('id','DESC')-> paginate(PAGINATION_COUNT);
+        $categories = Category::orderBy('id','DESC')-> paginate(PAGINATION_COUNT);
         return view('dashboard.categories.index', compact('categories'));
     }
 
     public function create(){
-        return view('dashboard.categories.create');
+        $categories = Category::select('id')->get();
+        return view('dashboard.categories.create', compact('categories'));
     }
     public function store(MainCategoryRequest $request){
         try {
@@ -25,6 +26,11 @@ class MainCategoriesController extends Controller
             if(!$request->has('is_active')){
                 $request->request->add(['is_active'=>0]);
             }
+
+            if($request->type == 1){
+                $request->request->add(['parent_id'=>null]);
+            }
+
             $category = Category::create($request->except('_token'));
             $category->name = $request->name;
             $category->save();
