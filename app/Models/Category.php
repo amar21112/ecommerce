@@ -26,7 +26,9 @@ class Category extends Model
     {
         return $query->whereNotNull('parent_id');
     }
-
+    public function scopeActive($query){
+        return $query->where('is_active',1);
+    }
     public function getActive()
     {
       return  $activation =($this->is_active == 0 ? 'Not Active' : 'Active');
