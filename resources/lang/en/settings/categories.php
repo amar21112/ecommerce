@@ -2,12 +2,14 @@
 
 return [
     'main_categories' => 'Main Categories',
+    'main_category' => 'Main Category',
     'edit_main_category' => 'Edit Main Category',
     'create_main_category' => 'Create Main Category',
     'all_main_categories' => 'All Main Categories',
     'home'=>'Home',
 
     'category_name'=>'Category Name',
+    'parent_category'=>'Main Category',
     'category_slug'=>'Category Slug',
     'status'=>'Status',
     'control'=>'Control',

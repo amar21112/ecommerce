@@ -9,11 +9,11 @@
                     <div class="row breadcrumbs-top">
                         <div class="breadcrumb-wrapper col-12">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">{{__('settings/categories.home')}}  </a>
+                                <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Home</a>
                                 </li>
-                                <li class="breadcrumb-item"><a href="{{route('admin.mainCategories')}}"> {{__('settings/categories.main_categories')}} </a>
+                                <li class="breadcrumb-item"><a href="{{route('admin.tags')}}"> Tag </a>
                                 </li>
-                                <li class="breadcrumb-item active">create
+                                <li class="breadcrumb-item active">edit - {{$tag -> name}}
                                 </li>
                             </ol>
                         </div>
@@ -27,7 +27,7 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title" id="basic-layout-form">{{__('settings/categories.create_main_category')}}</h4>
+                                    <h4 class="card-title" id="basic-layout-form">Edit Tag</h4>
                                     <a class="heading-elements-toggle"><i
                                             class="la la-ellipsis-v font-medium-3"></i></a>
                                     <div class="heading-elements">
@@ -44,59 +44,37 @@
                                 <div class="card-content collapse show">
                                     <div class="card-body">
                                         <form class="form"
-                                              action="{{route('admin.subCategories.store')}}"
+                                              action="{{route('admin.tags.update',$tag -> id)}}"
                                               method="POST"
                                               enctype="multipart/form-data">
                                             @csrf
 
-                                            <div class="form-group">
+                                            <input name="id" value="{{$tag -> id}}" type="hidden">
 
-                                            <div class="form-group">
                                             <div class="form-body">
 
-                                                <h4 class="form-section"><i class="ft-home"></i>category data</h4>
-
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="form-group">
-                                                            <label for="projectinput2">Select Main Category</label>
-                                                            <select name="parent_id" class="select2 form-control">
-                                                                <optgroup label="please select category">
-                                                                    @if($categories && $categories ->count() > 0)
-                                                                        @foreach($categories as $category)
-                                                                            <option value="{{$category->id}}">{{$category->name}}</option>
-                                                                        @endforeach
-                                                                    @endif
-                                                                </optgroup>
-                                                            </select>
-                                                            @error('parent_id')
-                                                            <span class="text-danger">{{$message}}</span>
-                                                            @enderror
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                <h4 class="form-section"><i class="ft-home"></i>tag date</h4>
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="projectinput1">{{__('settings/categories.category_name')}}</label>
+                                                            <label for="projectinput1">Tag Name</label>
                                                             <input type="text" id="name"
                                                                    class="form-control"
                                                                    placeholder="  "
-
+                                                                   value="{{$tag -> name}}"
                                                                    name="name">
                                                             @error("name")
                                                             <span class="text-danger">{{__($message)}}</span>
                                                             @enderror
                                                         </div>
                                                     </div>
-
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="projectinput2">{{__('settings/categories.category_slug')}}</label>
-                                                            <input type="text" id="name"
+                                                            <label for="projectinput1">Tag Slug</label>
+                                                            <input type="text" id="slug"
                                                                    class="form-control"
-                                                                   placeholder=""
-
+                                                                   placeholder="  "
+                                                                   value="{{$tag -> slug}}"
                                                                    name="slug">
                                                             @error("slug")
                                                             <span class="text-danger">{{__($message)}}</span>
@@ -104,26 +82,9 @@
                                                         </div>
                                                     </div>
 
+
                                                 </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group mt-1">
-                                                        <label for="switcheryColor4"
-                                                               class="card-title ml-1">{{__('settings/categories.status')}} </label>
-
-                                                        <input type="checkbox" value="1"
-                                                               name="is_active"
-                                                               id="switcheryColor4"
-                                                               class="switchery" data-color="success"
-                                                               checked />
-
-
-                                                        @error("is_active")
-                                                        <span class="text-danger"> {{__($message)}}</span>
-                                                        @enderror
-                                                    </div>
                                                 </div>
-                                            </div>
-
 
                                             <div class="form-actions">
                                                 <button type="button" class="btn btn-warning mr-1"

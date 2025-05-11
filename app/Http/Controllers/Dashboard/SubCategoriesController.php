@@ -27,6 +27,7 @@ class SubCategoriesController extends Controller
                 $request->request->add(['is_active'=>0]);
             }
             $category = Category::create($request->except('_token'));
+            $category->name = $request->name;
             $category->save();
 
             DB::commit();
@@ -62,6 +63,7 @@ class SubCategoriesController extends Controller
                 return redirect()->route('admin.subCategories')->with(['error'=>__('settings/categories.not_found')]);
             }
             $category->update($request->except('_token'));
+            $category->name = $request->name;
             $category->save();
             return redirect()->route('admin.subCategories')->with(['success'=>__('settings/categories.updated')]);
         }catch (\Exception $exception){
@@ -75,6 +77,7 @@ class SubCategoriesController extends Controller
             if(!$category){
                 return redirect()->route('admin.subCategories')->with(['error'=>__('settings/categories.not_found')]);
             }
+            $category->translations()->delete();
             $category->delete();
              return redirect()->route('admin.subCategories')->with(['success'=>__('settings/categories.deleted')]);
         }catch (\Exception $exception){

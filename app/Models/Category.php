@@ -31,4 +31,10 @@ class Category extends Model
     {
       return  $activation =($this->is_active == 0 ? 'Not Active' : 'Active');
     }
+
+    public function parentCategory(){
+        return $this->belongsTo(self::class, 'parent_id');
+    }
+
+
 }
