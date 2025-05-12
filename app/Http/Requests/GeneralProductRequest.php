@@ -33,7 +33,8 @@ class GeneralProductRequest extends FormRequest
             'categories.*' => 'numeric|exists:categories,id',
             'tags' => 'nullable|array',
             'tags.*' => 'numeric|exists:tags,id',
-            'brand_id' => 'required|exists:brands,id'
+            'brand_id' => 'required|exists:brands,id',
+            'is_active' => 'boolean',
         ];
     }
 
