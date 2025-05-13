@@ -67,14 +67,15 @@
                                                         <td>
                                                             <div class="btn-group" role="group"
                                                                  aria-label="Basic example">
-                                                                <a href=""
-                                                                   class="btn btn-outline-primary btn-min-width box-shadow-3 mr-1 mb-1">السعر</a>
+                                                                <a href="{{route('admin.products.general.editPrice',$product->id)}}"
+                                                                   class="btn btn-outline-primary btn-min-width box-shadow-3 mr-1 mb-1">price&offers</a>
+
+                                                                <a href="{{route('admin.products.general.editStock',$product->id)}}"
+                                                                   class="btn btn-outline-primary btn-min-width box-shadow-3 mr-1 mb-1">Stock</a>
 
                                                                 <a href=""
                                                                    class="btn btn-outline-primary btn-min-width box-shadow-3 mr-1 mb-1">الصور</a>
 
-                                                                <a href=""
-                                                                   class="btn btn-outline-primary btn-min-width box-shadow-3 mr-1 mb-1">المستودع</a>
                                                             </div>
                                                         </td>
                                                     </tr>

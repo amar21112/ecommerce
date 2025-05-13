@@ -23,12 +23,21 @@ class MainCategoryRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-           'name'=>'required',
-            'slug'=>'required|unique:categories,slug,'.$this->id,
-           'is_active'=>'boolean',
-            'type'=>'required|in:1,2',
+        $rules = [
+            'name' => 'required',
+            'slug' => 'required|unique:categories,slug,'.$this->id,
+            'is_active' => 'boolean',
         ];
+
+        // Only validate type if it's present in the request
+        if ($this->has('type')) {
+            $rules['type'] = 'in:1,2';
+        }
+
+        if($this->has('parent_id')) {
+            $rules['parent_id'] = 'exists:categories,id';
+        }
+        return $rules;
     }
 
     public function messages(){

@@ -27,7 +27,7 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title" id="basic-layout-form"> أضافة منتج جديد </h4>
+                                    <h4 class="card-title" id="basic-layout-form">Add New Product</h4>
                                     <a class="heading-elements-toggle"><i
                                             class="la la-ellipsis-v font-medium-3"></i></a>
                                     <div class="heading-elements">
@@ -53,11 +53,11 @@
 
                                             <div class="form-body">
 
-                                                <h4 class="form-section"><i class="ft-home"></i> البيانات الاساسية للمنتج   </h4>
+                                                <h4 class="form-section"><i class="ft-home"></i>Product Data</h4>
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="projectinput1"> اسم  المنتج
+                                                            <label for="projectinput1"> Product Name
                                                             </label>
                                                             <input type="text" id="name"
                                                                    class="form-control"
@@ -72,7 +72,7 @@
 
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="projectinput1"> اسم بالرابط
+                                                            <label for="projectinput1"> Slug
                                                             </label>
                                                             <input type="text"
                                                                    class="form-control"
@@ -89,7 +89,7 @@
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="projectinput1"> وصف المنتج
+                                                            <label for="projectinput1"> Product Description
                                                             </label>
                                                             <textarea  name="description" id="description"
                                                                        class="form-control"
@@ -104,7 +104,7 @@
 
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="projectinput1"> الوصف المختصر
+                                                            <label for="projectinput1">Shor Description
                                                             </label>
                                                             <textarea  name="short_description" id="short-description"
                                                                        class="form-control"
@@ -123,7 +123,7 @@
                                                 <div class="row" >
                                                     <div class="col-md-4">
                                                         <div class="form-group">
-                                                            <label for="projectinput1"> اختر القسم
+                                                            <label for="projectinput1"> Select Categories
                                                             </label>
                                                             <select name="categories[]" class="select2 form-control" multiple>
                                                                 <optgroup label="من فضلك أختر القسم ">
@@ -142,7 +142,7 @@
                                                     </div>
                                                     <div class="col-md-4">
                                                         <div class="form-group">
-                                                            <label for="projectinput1"> اختر ألعلامات الدلالية
+                                                            <label for="projectinput1"> Select Tags
                                                             </label>
                                                             <select name="tags[]" class="select2 form-control" multiple>
                                                                 <optgroup label=" اختر ألعلامات الدلالية ">
@@ -161,7 +161,7 @@
                                                     </div>
                                                     <div class="col-md-4">
                                                         <div class="form-group">
-                                                            <label for="projectinput1"> اختر ألماركة
+                                                            <label for="projectinput1">Select Brand
                                                             </label>
                                                             <select name="brand_id" class="select2 form-control">
                                                                 <optgroup label="من فضلك أختر الماركة ">
@@ -180,6 +180,9 @@
                                                     </div>
                                                 </div>
 
+                                                @include('dashboard.products.general.priceCreate')
+                                                @include('dashboard.products.general.stockCreate')
+
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="form-group mt-1">
@@ -189,7 +192,7 @@
                                                                    class="switchery" data-color="success"
                                                                    checked/>
                                                             <label for="switcheryColor4"
-                                                                   class="card-title ml-1">الحالة </label>
+                                                                   class="card-title ml-1">Status </label>
 
                                                             @error("is_active")
                                                             <span class="text-danger">{{$message }}</span>
@@ -229,14 +232,14 @@
 @section('script')
 
     <script>
-        $('input:radio[name="type"]').change(
-            function(){
-                if (this.checked && this.value == '2') {  // 1 if main cat - 2 if sub cat
-                    $('#cats_list').removeClass('hidden');
-
+            $(document).on('change','#manageStock',function(){
+                if($(this).val() == 1 ){
+                    $('#qtyDiv').show();
                 }else{
-                    $('#cats_list').addClass('hidden');
+                    $('#qtyDiv').hide();
                 }
             });
-    </script>
+        </script>
+
+
 @stop

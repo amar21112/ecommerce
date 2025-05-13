@@ -74,7 +74,7 @@
 
                                             <div class="form-body">
 
-                                                <h4 class="form-section"><i class="ft-home"></i>category date</h4>
+                                                <h4 class="form-section"><i class="ft-home"></i>category data</h4>
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
