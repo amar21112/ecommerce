@@ -62,7 +62,7 @@ Route::group(['prefix'=>LaravelLocalization::setLocale(),
             Route::get('delete/{id}', 'TagsController@destroy')->name('admin.tags.delete');
         });
 
-
+// products route
         Route::group(['prefix' => 'products'], function () {
            Route::get('/', 'ProductsController@index')->name('admin.products');
 
@@ -77,6 +77,7 @@ Route::group(['prefix'=>LaravelLocalization::setLocale(),
 
            Route::get('add-image/{id}', 'ProductsController@addImage')->name('admin.products.general.addImage');
            Route::post('store-image', 'ProductsController@storeImage')->name('admin.products.general.storeImage');
+           Route::post('store-image-db', 'ProductsController@storeImageDb')->name('admin.products.general.storeImageDb');
         });
     });
 

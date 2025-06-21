@@ -5,11 +5,14 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\GeneralProductRequest;
 use App\Http\Requests\PriceProductRequest;
+use App\Http\Requests\ProductImagesRequest;
 use App\Http\Requests\StockProductRequest;
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\Image;
 use App\Models\Product;
 use App\Models\Tag;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class ProductsController extends Controller
@@ -118,8 +121,39 @@ class ProductsController extends Controller
         }
         return view('dashboard.products.general.imageCreate', compact('product'));
     }
-    public function storeImage()
-    {
 
+    // store image in folder
+    public function storeImage(Request $request)
+    {
+        $file =  $request->file('dzfile');
+        $fileName='';
+        if($file != null){
+            $fileName = saveImage('products' , $file);
+        }
+
+        return response()->json([
+            'name' => $fileName,
+            'original_name' => $file->getClientOriginalName(),
+        ]);
+    }
+
+    public function storeImageDb(ProductImagesRequest $request)
+    {
+        try{
+
+            if($request->has('document') &&  count($request->document) > 0){
+
+                foreach ($request->document as $image){
+                    Image::create([
+                        'product_id'=>$request->product_id,
+                        'photo'=>$image,
+                    ]);
+                }
+            }
+
+          return redirect()->route('admin.products')->with('success' , 'Product image created successfully');
+        } catch (\Exception $exception) {
+            return redirect()->route('admin.products')->with('error', 'Product image failed');
+        }
     }
 }
