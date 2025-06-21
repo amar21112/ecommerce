@@ -65,15 +65,18 @@ Route::group(['prefix'=>LaravelLocalization::setLocale(),
 
         Route::group(['prefix' => 'products'], function () {
            Route::get('/', 'ProductsController@index')->name('admin.products');
+
            Route::get('general-information', 'ProductsController@create')->name('admin.products.general.create');
            Route::post('store-general-information', 'ProductsController@store')->name('admin.products.general.store');
+
            Route::get('change-price&offer/{id}', 'ProductsController@editPrice')->name('admin.products.general.editPrice');
            Route::POST('update-price&offer/{id}', 'ProductsController@updatePrice')->name('admin.products.general.updatePrice');
 
            Route::get('edit-product-in-stock/{id}', 'ProductsController@editStock')->name('admin.products.general.editStock');
            Route::POST('update-product-stock', 'ProductsController@updateStock')->name('admin.products.general.updateStock');
 
-
+           Route::get('add-image/{id}', 'ProductsController@addImage')->name('admin.products.general.addImage');
+           Route::post('store-image', 'ProductsController@storeImage')->name('admin.products.general.storeImage');
         });
     });
 

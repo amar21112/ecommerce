@@ -110,4 +110,16 @@ class ProductsController extends Controller
             return redirect()->route('admin.products')->with('error', 'Product not updated');
         }
     }
+
+    public function addImage($id){
+        $product = Product::find($id);
+        if(!$product){
+            return redirect()->route('admin.products')->with('error' , 'Product not found');
+        }
+        return view('dashboard.products.general.imageCreate', compact('product'));
+    }
+    public function storeImage()
+    {
+
+    }
 }
