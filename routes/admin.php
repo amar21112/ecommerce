@@ -61,6 +61,43 @@ Route::group(['prefix'=>LaravelLocalization::setLocale(),
             Route::post('update/{id}', 'TagsController@update')->name('admin.tags.update');
             Route::get('delete/{id}', 'TagsController@destroy')->name('admin.tags.delete');
         });
+
+// products route
+        Route::group(['prefix' => 'products'], function () {
+           Route::get('/', 'ProductsController@index')->name('admin.products');
+
+           Route::get('general-information', 'ProductsController@create')->name('admin.products.general.create');
+           Route::post('store-general-information', 'ProductsController@store')->name('admin.products.general.store');
+
+           Route::get('change-price&offer/{id}', 'ProductsController@editPrice')->name('admin.products.general.editPrice');
+           Route::POST('update-price&offer/{id}', 'ProductsController@updatePrice')->name('admin.products.general.updatePrice');
+
+           Route::get('edit-product-in-stock/{id}', 'ProductsController@editStock')->name('admin.products.general.editStock');
+           Route::POST('update-product-stock', 'ProductsController@updateStock')->name('admin.products.general.updateStock');
+
+           Route::get('add-image/{id}', 'ProductsController@addImage')->name('admin.products.general.addImage');
+           Route::post('store-image', 'ProductsController@storeImage')->name('admin.products.general.storeImage');
+           Route::post('store-image-db', 'ProductsController@storeImageDb')->name('admin.products.general.storeImageDb');
+        });
+
+        // attributes
+        Route::group(['prefix' => 'attributes'], function () {
+            Route::get('/', 'AttributesController@index')->name('admin.attributes');
+            Route::get('create', 'AttributesController@create')->name('admin.attributes.create');
+            Route::post('store', 'AttributesController@store')->name('admin.attributes.store');
+            Route::get('edit/{id}', 'AttributesController@edit')->name('admin.attributes.edit');
+            Route::post('update/{id}', 'AttributesController@update')->name('admin.attributes.update');
+            Route::get('delete/{id}', 'AttributesController@destroy')->name('admin.attributes.delete');
+        });
+        // options
+        Route::group(['prefix' => 'attribute-options'], function () {
+            Route::get('/', 'OptionsController@index')->name('admin.options');
+            Route::get('create', 'OptionsController@create')->name('admin.options.create');
+            Route::post('store', 'OptionsController@store')->name('admin.options.store');
+            Route::get('edit/{id}', 'OptionsController@edit')->name('admin.options.edit');
+            Route::post('update/{id}', 'OptionsController@update')->name('admin.options.update');
+            Route::get('delete/{id}', 'OptionsController@destroy')->name('admin.options.delete');
+        });
     });
 
     Route::group(['namespace' => 'Dashboard', 'middleware' => 'guest:admin','prefix'=>'admin'], function () {

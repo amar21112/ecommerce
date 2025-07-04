@@ -1,18 +1,18 @@
 <?php
 
-define('PAGINATION_COUNT', 10);
+define('PAGINATION_COUNT', 20);
 function  getFolder(){
          return app()->getLocale() == 'ar' ? 'css-rtl' : 'css';
     }
-    function saveImage($folder,$image)
-{
-    $file_extention = $image->getClientOriginalExtension();
-    $file_name = time().'.'.$file_extention;
-    $path = $folder;
-    $image->move($path,$file_name);
+function saveImage($folder,$image)
+   {
+        $file_ext = $image->getClientOriginalExtension();
+        $file_name = time().'.'.$file_ext;
+        $path = $folder;
+        $image->move($path,$file_name);
 
-    return $file_name;
-}
+        return $file_name;
+   }
  function deleteImage($imagePath)
 {
 
