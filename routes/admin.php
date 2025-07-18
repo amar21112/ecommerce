@@ -98,6 +98,12 @@ Route::group(['prefix'=>LaravelLocalization::setLocale(),
             Route::post('update/{id}', 'OptionsController@update')->name('admin.options.update');
             Route::get('delete/{id}', 'OptionsController@destroy')->name('admin.options.delete');
         });
+
+        Route::group(['prefix'=> 'sliders'], function () {
+           Route::get('/addImage' , 'SliderController@addImages')->name('admin.sliders.addImage');
+           Route::post('/storeImage' , 'SliderController@saveSliderImages')->name('admin.sliders.images.store');
+           Route::post('/store-image-db' , 'SliderController@saveSliderImagesDB')->name('admin.sliders.images.store.db');
+        });
     });
 
     Route::group(['namespace' => 'Dashboard', 'middleware' => 'guest:admin','prefix'=>'admin'], function () {

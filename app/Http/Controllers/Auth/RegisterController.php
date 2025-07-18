@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Services\SMSServices;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-
 class RegisterController extends Controller
 {
     /*
@@ -30,15 +31,16 @@ class RegisterController extends Controller
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
-
+    public $sms_service;
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(SMSServices $sms_service)
     {
         $this->middleware('guest');
+        $this->sms_service = $sms_service;
     }
 
     /**
@@ -51,7 +53,7 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'mobile' => ['required', 'string', 'max:11', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -64,10 +66,24 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+        try{
+            DB::beginTransaction();
+            $verfication = [];
+
+            $user = User::create([
+                'name' => $data['name'],
+                'mobile' => $data['mobile'],
+                'password' => Hash::make($data['password']),
+            ]);
+
+//            $verification['user_id'] = $user->id;
+//            $verification_data =  $this->sms_service->setVerificationCode($verification);
+//            $message = $this->sms_service->getSMSVerifyMessageByAppName($verification_data -> code );
+            DB::commit();
+            return $user;
+        }catch (\Exception $e){
+         DB::rollBack();
+         return null;
+        }
     }
 }

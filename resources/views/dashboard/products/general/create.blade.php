@@ -104,7 +104,7 @@
 
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="projectinput1">Shor Description
+                                                            <label for="projectinput1">Short Description
                                                             </label>
                                                             <textarea  name="short_description" id="short-description"
                                                                        class="form-control"

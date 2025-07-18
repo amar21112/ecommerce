@@ -126,7 +126,18 @@
                         </ul>
                     </li>
                 </ul>
+                <ul class="menu-content">
+                    <li><a class="menu-item" href="#" data-i18n="nav.templates.vert.main">Sliders</a>
+                        <ul class="menu-content">
+                            <li><a class="menu-item" href="{{route('admin.sliders.addImage')}}"
+                                   data-i18n="nav.templates.vert.classic_menu">Add Slider Image</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
             </li>
+
+
             <li class=" navigation-header">
                 <span data-i18n="nav.category.layouts">Layouts</span><i class="la la-ellipsis-h ft-minus"
                                                                         data-toggle="tooltip"

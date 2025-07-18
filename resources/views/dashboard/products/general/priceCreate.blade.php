@@ -33,7 +33,7 @@
         <div class="form-group">
             <label for="projectinput1"> Special Price
             </label>
-            <input type="number" name="special_price" id="spec_price" class="form-control" min="0" max="1000000" step="0.01">
+            <input type="number" name="special_price" id="spec_price" placeholder="" class="form-control" min="0" max="1000000" step="0.01">
             @error('special_price')
             <span class="text-danger"> {{$message}}</span>
             @enderror
