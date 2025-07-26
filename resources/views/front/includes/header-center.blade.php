@@ -33,7 +33,7 @@
                         <div class="blockcart cart-preview active" data-refresh-url="">
                             <div class="header-cart">
                                 <div class="cart-left">
-                                    <a href="" title="My Wishlists">
+                                    <a href="{{route('site.cart.index')}}" title="My Wishlists">
                                         <div class="shopping-cart">
                                             <i class="zmdi zmdi-shopping-cart"></i>
 
