@@ -9,6 +9,7 @@ class Brand extends Model
 {
     use Translatable;
     protected $table = 'brands';
+    protected $with = ['translations'];
     public $translatedAttributes = ['name'];
 
     protected $fillable= ['active','photo'];
@@ -17,6 +18,9 @@ class Brand extends Model
         'active' => 'boolean'
     ];
 
+    public function scopeActive($query){
+        return $query->where('active',1);
+    }
     public function getActive()
     {
         return  $activation =($this->active == 0 ? 'Not Active' : 'Active');

@@ -11,6 +11,7 @@
 |
 */
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -22,8 +23,6 @@ Route::get('/login', function () {
 })->name('login');
 
 
-Route::get('test', function () {
-  $category = \App\Models\Category::find(2);
-  $category->makeVisible(['translations']);
-  return $category;
-});
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

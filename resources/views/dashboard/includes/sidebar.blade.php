@@ -22,23 +22,23 @@
                 </ul>
             </li>
 
-
+            @can('categories')
             <li class="nav-item"><a href=""><i class="la la-group"></i>
-                    <span class="menu-title" data-i18n="nav.dash.main">الاقسام الرئيسيه </span>
+                    <span class="menu-title" data-i18n="nav.dash.main">Main Category </span>
                     <span
                         class="badge badge badge-danger badge-pill float-right mr-2">{{\App\Models\Category::count()}}</span>
                 </a>
                 <ul class="menu-content">
                     <li class="active"><a class="menu-item" href="{{route('admin.mainCategories')}}"
-                                          data-i18n="nav.dash.ecommerce"> عرض الكل </a>
+                                          data-i18n="nav.dash.ecommerce">show all</a>
                     </li>
                     <li><a class="menu-item" href="{{route('admin.mainCategories.create')}}" data-i18n="nav.dash.crypto">أضافة
-                             قسم جديد </a>
+                             new category </a>
                     </li>
                 </ul>
             </li>
-
-
+            @endcan
+            @can('brands')
             <li class="nav-item"><a href=""><i class="la la-male"></i>
                     <span class="menu-title" data-i18n="nav.dash.main" >{{__('sidebar.brands')}}</span>
                     <span
@@ -52,8 +52,8 @@
                     </li>
                 </ul>
             </li>
-
-
+            @endcan
+            @can('tags')
             <li class="nav-item"><a href=""><i class="la la-male"></i>
                     <span class="menu-title" data-i18n="nav.dash.main">Tags</span>
                     <span
@@ -67,22 +67,52 @@
                     </li>
                 </ul>
             </li>
-
-
-            <li class="nav-item">
-                <a href=""><i class="la la-male"></i>
-                    <span class="menu-title" data-i18n="nav.dash.main"></span>
+            @endcan
+            @can('products')
+            <li class="nav-item"><a href=""><i class="la la-male"></i>
+                    <span class="menu-title" data-i18n="nav.dash.main">Products</span>
                     <span
-                        class="badge badge badge-danger  badge-pill float-right mr-2">0</span>
+                        class="badge badge badge-warning  badge-pill float-right mr-2">{{\App\Models\Product::count()}}</span>
                 </a>
                 <ul class="menu-content">
-                    <li class="active"><a class="menu-item" href=""
-                                          data-i18n="nav.dash.ecommerce">  </a>
+                    <li class="active"><a class="menu-item" href="{{route('admin.products')}}"
+                                          data-i18n="nav.dash.ecommerce">Show Product</a>
+                    </li>
+                    <li><a class="menu-item" href="{{route('admin.products.general.create')}}" data-i18n="nav.dash.crypto">Add Product</a>
+                    </li>
+                </ul>
+            </li>
+            @endcan
+            <li class="nav-item"><a href=""><i class="la la-male"></i>
+                    <span class="menu-title" data-i18n="nav.dash.main">Attributes</span>
+                    <span
+                        class="badge badge badge-warning  badge-pill float-right mr-2">{{\App\Models\Attribute::count()}}</span>
+                </a>
+                <ul class="menu-content">
+                    <li class="active"><a class="menu-item" href="{{route('admin.attributes')}}"
+                                          data-i18n="nav.dash.ecommerce">Show Attributes</a>
+                    </li>
+                    <li><a class="menu-item" href="{{route('admin.attributes.create')}}" data-i18n="nav.dash.crypto">Add Attribute</a>
                     </li>
                 </ul>
             </li>
 
-
+            @can('options')
+            <li class="nav-item"><a href=""><i class="la la-male"></i>
+                    <span class="menu-title" data-i18n="nav.dash.main">Options</span>
+                    <span
+                        class="badge badge badge-warning  badge-pill float-right mr-2">{{\App\Models\Option::count()}}</span>
+                </a>
+                <ul class="menu-content">
+                    <li class="active"><a class="menu-item" href="{{route('admin.options')}}"
+                                          data-i18n="nav.dash.ecommerce">Show Options</a>
+                    </li>
+                    <li><a class="menu-item" href="{{route('admin.options.create')}}" data-i18n="nav.dash.crypto">Add options</a>
+                    </li>
+                </ul>
+            </li>
+            @endcan
+            @can('settings')
             <li class=" nav-item"><a href="#"><i class="la la-television"></i><span class="menu-title"
                                                                                     data-i18n="nav.templates.main">{{__('sidebar.settings')}}</span></a>
                 <ul class="menu-content">
@@ -99,7 +129,47 @@
                         </ul>
                     </li>
                 </ul>
+                <ul class="menu-content">
+                    <li><a class="menu-item" href="#" data-i18n="nav.templates.vert.main">Sliders</a>
+                        <ul class="menu-content">
+                            <li><a class="menu-item" href="{{route('admin.sliders.addImage')}}"
+                                   data-i18n="nav.templates.vert.classic_menu">Add Slider Image</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
             </li>
+            @endcan
+            @can('privileges')
+            <li class="nav-item"><a href=""><i class="la la-male"></i>
+                    <span class="menu-title" data-i18n="nav.dash.main">privileges</span>
+                    <span
+                        class="badge badge badge-warning  badge-pill float-right mr-2">{{\App\Models\Role::count()}}</span>
+                </a>
+                <ul class="menu-content">
+                    <li class="active"><a class="menu-item" href="{{route('admin.roles.index')}}"
+                                          data-i18n="nav.dash.ecommerce">Show permissons</a>
+                    </li>
+                    <li><a class="menu-item" href="{{route('admin.roles.create')}}" data-i18n="nav.dash.crypto">create role</a>
+                    </li>
+                </ul>
+            </li>
+            @endcan
+            @can('users')
+            <li class="nav-item"><a href=""><i class="la la-male"></i>
+                    <span class="menu-title" data-i18n="nav.dash.main">Dashboard Users</span>
+                </a>
+                <ul class="menu-content">
+                    <li class="active"><a class="menu-item" href="{{route('admin.users.index')}}"
+                                          data-i18n="nav.dash.ecommerce">Show all</a>
+                    </li>
+                    <li><a class="menu-item" href="{{route('admin.users.create')}}" data-i18n="nav.dash.crypto">Create dashboard user</a>
+                    </li>
+                </ul>
+            </li>
+            @endcan
+
             <li class=" navigation-header">
                 <span data-i18n="nav.category.layouts">Layouts</span><i class="la la-ellipsis-h ft-minus"
                                                                         data-toggle="tooltip"
