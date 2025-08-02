@@ -57,6 +57,18 @@ php artisan key:generate
 php artisan migrate --seed
 ```
 6. Serve the app
-   ```bash
-   php artisan serve
-   ```
+```bash
+php artisan serve
+ ```
+---
+🛡️ Roles & Permissions
+Admin users have access to all dashboard features. Permissions are managed using Laravel Gate and Middleware.
+
+---
+## 📸 Screenshots
+
+### 🖥️ Admin Dashboard
+![Admin Dashboard](public/screenshots/admin-dashboard.png)
+
+### 🛍️ User interface
+![Product Page](public/screenshots/user-page.png)
