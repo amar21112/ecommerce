@@ -28,8 +28,7 @@ A scalable and extensible eCommerce web application built with **Laravel**. This
 - **Backend**: Laravel (PHP Framework)
 - **Frontend**: Blade templating engine
 - **Database**: MySQL
-- **Authentication**: Laravel Breeze / Sanctum (or Passport if you used it)
-- **Authorization**: Laravel Gates & Middleware
+- **Authentication&Authorization**: Laravel Gates & Middleware
 
 ---
 
