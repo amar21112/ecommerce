@@ -39,3 +39,24 @@ A scalable and extensible eCommerce web application built with **Laravel**. This
 ```bash
 git clone https://github.com/amar21112/ecommerce.git
 cd ecommerce
+```
+2. Install dependence
+```bash
+cp .env.example .env
+php artisan key:generate
+```
+3. Setup environment
+```bash
+cp .env.example .env
+php artisan key:generate
+```
+4.Configure your .env file
+
+5.Run migration and seeds
+```bash
+php artisan migrate --seed
+```
+6. Serve the app
+   ```bash
+   php artisan serve
+   ```
